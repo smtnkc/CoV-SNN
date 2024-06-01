@@ -169,3 +169,7 @@ data/*.csv
 *.pkl
 snn_*/
 tok/
+data/GISAID_MAY_2024/metadata/*
+data/GISAID_MAY_2024/spikeprot0508/*_acc.fasta
+data/GISAID_MAY_2024/spikeprot0508/*_acc_filtered.fasta
+data/GISAID_MAY_2024/spikeprot0508/*0508.fasta
