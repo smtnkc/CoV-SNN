@@ -51,6 +51,7 @@ parser.add_argument('--num_labels', type=int, default=None, help='Number of labe
 parser.add_argument('--conf_threshold', type=float, default=None, help='Confidence threshold')
 parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
 parser.add_argument('--epochs', type=int, default=10, help='Number of epochs')
+parser.add_argument('--early_stopping', action='store_true', help='Enable early stopping')
 parser.add_argument('--lr', type=float, default=1e-3, help='Learning rate')
 parser.add_argument('--relu', type=float, default=0.0, help='ReLU factor')
 parser.add_argument('--dropout', type=float, default=0.0, help='Dropout rate')
@@ -253,6 +254,7 @@ model.fit(train_objectives=[(train_dataloader, train_loss)],
           tester=test_evaluator,
           zero_shot_tester=zero_test_evaluator,
           epochs=CONSTANTS['EPOCHS'],
+          early_stopping = args.early_stopping,
           optimizer_class=torch.optim.AdamW,
           optimizer_params= {'lr': CONSTANTS['LR']}, # 1e-3 for CoV-RoBERTa, 1e-6 for ProtBERT
           weight_decay=0.1, # 0.1 for CoV-RoBERTa, 0.01 for ProtBERT

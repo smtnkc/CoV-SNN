@@ -1,0 +1,12 @@
+LOSS_NAME,NEG_SET,POOLING_MODE,CONCAT,NUM_LABELS,CONF_THRESHOLD,BATCH_SIZE,EPOCHS,LR,RELU,DROPOUT,MARGIN,MAX_TEST_ACC,MAX_ZERO_ACC
+TripletLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.9925,0.706
+ContrastiveLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.9969,
+SoftmaxLoss,other,max,CD,2.0,0.0,32,10,0.0001,0.2,0.2,,0.9594,
+SoftmaxLoss,other,max,CD,2.0,0.0,32,10,0.0001,0.0,0.0,,0.9663,
+SoftmaxLoss,other,max,CD,5.0,0.0,32,10,1e-05,0.0,0.0,,0.9363,
+ContrastiveLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.8275,
+ContrastiveLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.8275,
+SoftmaxLoss,other,max,CD,5.0,0.0,32,10,1e-05,0.0,0.0,,0.5389,
+TripletLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.9925,
+ContrastiveLoss,other,max,,,,32,10,0.0001,0.2,0.2,2.0,0.9969,
+SoftmaxLoss,other,max,CD,5.0,0.0,32,10,1e-05,0.0,0.0,,0.9363,

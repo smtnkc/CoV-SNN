@@ -19,7 +19,7 @@ for margin in "${margins[@]}"; do
         for relu in "${relus[@]}"; do
             # Construct the command to run the Python script with the arguments
             cmd="python train_test_contrastive.py --loss_name $loss_name --neg_set $neg_set"
-            cmd+=" --pooling_mode $pooling_mode --batch_size $batch_size --epochs $epochs"
+            cmd+=" --pooling_mode $pooling_mode --batch_size $batch_size --epochs $epochs --early_stopping"
             cmd+=" --lr $lr --relu $relu --dropout $dropout --margin $margin --gstats $1"
 
             # Run the command
