@@ -10,7 +10,7 @@ import random
 
 # Load the SentenceTransformer model
 CHECKPOINT=sys.argv[1] # X for CoV-RoBERTa, 0 for CoV-SNN with best test accuracy, 4 for CoV-SNN with best zero-shot accuracy 
-DISTANCE=sys.argv[2] # L1 for Manhattan distance, L2 for Euclidean distance
+DISTANCE= "L2" # sys.argv[2] # L1 for Manhattan distance, L2 for Euclidean distance
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # reproducibility
@@ -24,8 +24,8 @@ torch.backends.cudnn.benchmark = False
 if CHECKPOINT == "X":
     tokenizer = RobertaTokenizerFast.from_pretrained("tok/")
     MODEL_NAME = f"./mlm_checkpoints/CoV-RoBERTa_2048"
-    masked_lm_model = RobertaForMaskedLM.from_pretrained(MODEL_NAME)
-    embedding_model = RobertaModel.from_pretrained(MODEL_NAME)
+    masked_lm_model = RobertaForMaskedLM.from_pretrained(MODEL_NAME).to(device)
+    embedding_model = RobertaModel.from_pretrained(MODEL_NAME).to(device)
 else:
     sbert_model = SentenceTransformer("outputs/ContrastiveLoss_omicron_vs_delta_Pmax_R0.2" + \
                                     f"_D0.1_E10_LR_0.001_B32_M2.0/checkpoints/checkpoint-{CHECKPOINT}")
@@ -124,7 +124,10 @@ def calculate_perplexity(sentence):
 o = pd.read_csv("data/unique_Omicron_2k.csv")["sequence"].tolist()[:2000]
 e = pd.read_csv("data/unique_Eris_2k.csv")["sequence"].tolist()[:2000]
 n = pd.read_csv("data/unique_New_2k.csv")["sequence"].tolist()[:2000]
-gpt = pd.read_csv("data/unique_Gpt_2k.csv")["sequence"].tolist()[:2000]
+gpt_10 = pd.read_csv("data/unique_Gpt_1.0_2k.csv")["sequence"].tolist()[:2000]
+gpt_11 = pd.read_csv("data/unique_Gpt_1.1_2k.csv")["sequence"].tolist()[:2000]
+gpt_12 = pd.read_csv("data/unique_Gpt_1.2_2k.csv")["sequence"].tolist()[:2000]
+gpt_15 = pd.read_csv("data/unique_Gpt_1.5.csv")["sequence"].tolist()[:2000]
 
 
 import time
@@ -198,6 +201,8 @@ def cscs(average_embedding, target_sentences, dataset_name):
     results_df.to_csv(f"{out_file_name}", index=False)
 
 
-cscs(average_embedding, e, "eris")
-cscs(average_embedding, n, "new")
-cscs(average_embedding, gpt, "gpt")
+#cscs(average_embedding, e, "eris")
+#cscs(average_embedding, n, "new")
+#cscs(average_embedding, gpt_11, "GPT_1.1")
+#cscs(average_embedding, gpt_12, "GPT_1.2")
+cscs(average_embedding, gpt_15, "GPT_1.5")
