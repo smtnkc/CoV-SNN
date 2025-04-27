@@ -1,0 +1,19 @@
+{
+    "VOC_NAMES": [
+        "Greaney",
+        "Baum"
+    ],
+    "LOSS_NAME": "ContrastiveLoss",
+    "NEG_SET": "Greaney",
+    "POOLING_MODE": "max",
+    "CONCAT": null,
+    "NUM_LABELS": null,
+    "CONF_THRESHOLD": null,
+    "BATCH_SIZE": 32,
+    "EPOCHS": 10,
+    "LR": 0.0001,
+    "WD": 0.001,
+    "RELU": 0.3,
+    "DROPOUT": 0.5,
+    "MARGIN": 0.2
+}
