@@ -1,0 +1,70 @@
+#!/bin/bash
+python esm2_compute_cscs.py \
+    --csv data/unique_Omicron_2k.csv:omicron \
+    --csv data/unique_Eris_2k.csv:eris \
+    --csv data/unique_New_2k.csv:new \
+    --csv data/unique_Gpt_1.0_2k.csv:gpt \
+    --seq-col sequence \
+    --take-top 200 \
+    --eris-label eris \
+    --model esm2_t6_8M_UR50D \
+    --model-ckpt checkpoints/esm2_t6_8M_UR50D_omicron.pt \
+    --pll-model esm2_t6_8M_UR50D \
+    --pll-model-ckpt checkpoints/esm2_t6_8M_UR50D_omicron.pt \
+    --pll-mode all \
+    --pll-max-bsz 128 \
+    --ref-center mean:variant \
+    --ref-variant omicron \
+    --target-variant new \
+    --target-variant eris \
+    --target-variant gpt \
+    --cscs-formula log_ratio \
+    --amp \
+    --compile \
+    --out results/esm2_t6_8M_cscs_top200_log_ratio.csv && \
+python esm2_compute_cscs.py \
+    --csv data/unique_Omicron_2k.csv:omicron \
+    --csv data/unique_Eris_2k.csv:eris \
+    --csv data/unique_New_2k.csv:new \
+    --csv data/unique_Gpt_1.0_2k.csv:gpt \
+    --seq-col sequence \
+    --take-top 200 \
+    --eris-label eris \
+    --model esm2_t6_8M_UR50D \
+    --model-ckpt checkpoints/esm2_t6_8M_UR50D_omicron.pt \
+    --pll-model esm2_t6_8M_UR50D \
+    --pll-model-ckpt checkpoints/esm2_t6_8M_UR50D_omicron.pt \
+    --pll-mode all \
+    --pll-max-bsz 128 \
+    --ref-center mean:variant \
+    --ref-variant omicron \
+    --target-variant new \
+    --target-variant eris \
+    --target-variant gpt \
+    --cscs-formula percentile_hmean \
+    --amp \
+    --compile \
+    --out results/esm2_t6_8M_cscs_top200_percentile_hmean.csv && \
+python esm2_compute_cscs.py \
+    --csv data/unique_Omicron_2k.csv:omicron \
+    --csv data/unique_Eris_2k.csv:eris \
+    --csv data/unique_New_2k.csv:new \
+    --csv data/unique_Gpt_1.0_2k.csv:gpt \
+    --seq-col sequence \
+    --take-top 200 \
+    --eris-label eris \
+    --model esm2_t12_35M_UR50D \
+    --model-ckpt checkpoints/esm2_t12_35M_UR50D_omicron.pt \
+    --pll-model esm2_t12_35M_UR50D \
+    --pll-model-ckpt checkpoints/esm2_t12_35M_UR50D_omicron.pt \
+    --pll-mode all \
+    --pll-max-bsz 32 \
+    --ref-center mean:variant \
+    --ref-variant omicron \
+    --target-variant new \
+    --target-variant eris \
+    --target-variant gpt \
+    --cscs-formula rank_sum \
+    --amp \
+    --compile \
+    --out results/esm2_t12_35M_cscs_top200_rank_sum.csv

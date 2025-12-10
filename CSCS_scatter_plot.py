@@ -32,7 +32,7 @@ ALPHA = 0.3
 S = 10
 
 # Font size settings
-font_size = 20
+font_size = 22
 plt.rc('font', size=font_size)
 plt.rc('axes', titlesize=font_size)
 plt.rc('axes', labelsize=font_size)
@@ -55,10 +55,10 @@ else:
     axes[0].scatter(df_gpt10_cscs["log10(grammaticality)"], df_gpt10_cscs["log10(semantic_change)"], color='orange', alpha=ALPHA, s=S, label='GPT 1.0')
     axes[0].scatter(df_gpt15_cscs["log10(grammaticality)"], df_gpt15_cscs["log10(semantic_change)"], color='green', alpha=ALPHA, s=S, label='GPT 1.5')
     axes[0].scatter(df_new_cscs["log10(grammaticality)"], df_new_cscs["log10(semantic_change)"], color='red', alpha=ALPHA, s=S, label='New Omicron')
-axes[0].set_xlabel("Sequence Probability (log$_{10}$)", fontsize=font_size)
-axes[0].set_ylabel("Semantic change (log$_{10}$)", fontsize=font_size)
+axes[0].set_xlabel(r'Token-level log-likelihood ($\lambda_T$)', fontsize=font_size)
+axes[0].set_ylabel(r'Semantic change ($log{\Delta_Z}$)', fontsize=font_size)
 axes[0].legend()
-axes[0].set_title("Semantic Change vs Sequence Probability", fontsize=font_size)
+axes[0].set_title(r'Semantic Change vs Grammaticality ($\lambda_T$)', fontsize=font_size)
 
 # Plotting Semantic Change vs log10(1/Perplexity)
 if show_average:
@@ -71,10 +71,10 @@ else:
     axes[1].scatter(df_gpt10_cscs["log10(1/perplexity)"], df_gpt10_cscs["log10(semantic_change)"], color='orange', alpha=ALPHA, s=S, label='GPT 1.0')
     axes[1].scatter(df_gpt15_cscs["log10(1/perplexity)"], df_gpt15_cscs["log10(semantic_change)"], color='green', alpha=ALPHA, s=S, label='GPT 1.5')
     axes[1].scatter(df_new_cscs["log10(1/perplexity)"], df_new_cscs["log10(semantic_change)"], color='red', alpha=ALPHA, s=S, label='New Omicron')
-axes[1].set_xlabel("Inverse Perplexity (log$_{10}$)", fontsize=font_size)
-axes[1].set_ylabel("Semantic change (log$_{10}$)", fontsize=font_size)
+axes[1].set_xlabel(r'Average log-likelihood ($\lambda_A$)', fontsize=font_size)
+axes[1].set_ylabel(r'Semantic change ($log{\Delta_Z}$)', fontsize=font_size)
 axes[1].legend()
-axes[1].set_title("Semantic Change vs Inverse Perplexity", fontsize=font_size)
+axes[1].set_title(r'Semantic Change vs Grammaticality ($\lambda_A$)', fontsize=font_size)
 
 # Explicitly setting the x-tick label size
 for ax in axes:

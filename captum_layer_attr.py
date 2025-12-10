@@ -216,7 +216,7 @@ def calculate_layer_attributions(model, layer_module, inputs, n_steps=50):
     return torch.sum(torch.abs(attributions)).item()
 
 def visualize_attributions(all_attributions, save_path):
-    font_size = 20
+    font_size = 22
     # Set global font size
     plt.rcParams.update({'font.size': font_size})
     
@@ -236,7 +236,14 @@ def visualize_attributions(all_attributions, save_path):
         ax.bar(range(len(normalized_attributions)), normalized_attributions)
         ax.set_xlabel('Layer Index', fontsize=font_size)
         ax.set_ylabel('Normalized Total Attribution', fontsize=font_size)
-        ax.set_title(f'{metric}', fontsize=font_size)
+
+        title_map = {
+            'Semantic Change': 'Semantic Change',
+            'Sequence Probability': 'Token-level log-likelihood', #r'Grammaticality ($\lambda_T$)',
+            'Inverse Perplexity': 'Average log-likelihood', #r'Grammaticality ($\lambda_A$)'
+        }
+
+        ax.set_title(f'{title_map[metric]}', fontsize=font_size)
         
         # Set tick label size
         ax.tick_params(axis='both', which='major', labelsize=font_size)
