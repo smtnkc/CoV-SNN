@@ -161,14 +161,15 @@ cython_debug/
 
 .DS_Store
 *checkpoints/
-data/*.txt
+data/labels*.txt
+data/sequences*.txt
 data/*.pth
 data/*.csv
 !data/*_2k.csv
 *.bin
 *.pkl
+*.fa
 snn_*/
-tok/
 data/GISAID/metadata-0508/*
 data/GISAID/metadata-0615/*
 data/GISAID/spikeprot0508/*_acc.fasta

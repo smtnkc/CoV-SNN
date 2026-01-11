@@ -1,9 +1,9 @@
-[submodule "sentence-transformers"]
-	path = sentence-transformers
-	url = https://github.com/smtnkc/sentence-transformers.git
-[submodule "CoV-BiLSTM"]
-	path = CoV-BiLSTM
+[submodule "CoVFit"]
+	path = CoVFit
+	url = https://github.com/TheSatoLab/CoVFit.git
+[submodule "BiLSTM"]
+	path = BiLSTM
 	url = https://github.com/smtnkc/viral-mutation.git
-[submodule "CoV-ProtGPT2"]
-	path = CoV-ProtGPT2
+[submodule "ProtGPT2"]
+	path = ProtGPT2
 	url = https://github.com/smtnkc/CoV-ProtGPT2.git
