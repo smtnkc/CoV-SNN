@@ -1,6 +1,6 @@
 [submodule "CoVFit"]
 	path = CoVFit
-	url = https://github.com/TheSatoLab/CoVFit.git
+	url = https://github.com/smtnkc/CoVFit.git
 [submodule "BiLSTM"]
 	path = BiLSTM
 	url = https://github.com/smtnkc/viral-mutation.git
