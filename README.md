@@ -79,8 +79,8 @@ python supporting_analyses/captum_position_attr.py
 # Calculate confidence intervals
 python supporting_analyses/confidence_intervals.py
 
-# Statistical significance analysis for CSCS scores
-python supporting_analyses/statistical_significance_cscs.py
+# Paired one-sided t-tests for escape prediction scores
+python supporting_analyses/statistical_significance.py
 ```
 
 ### Note
